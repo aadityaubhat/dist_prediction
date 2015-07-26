@@ -1,0 +1,53 @@
+---
+title       : Stopping Distance Prediction App
+subtitle    : 
+author      : Aaditya Bhat
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Introduction
+
+The app uses 'cars' dataset in R. It fits Linear Regression model to the data, treating distance as response and speed as regressor.
+
+
+
+```{r, echo = FALSE}
+data(cars)
+```
+
+```{r}
+head(cars)
+```
+
+---
+
+## Plotting speed and dist
+
+```{r}
+plot(cars)
+```
+
+---
+
+## Linear Regression 
+
+As speed and distance have a positive correlation, a linear regression will be a good fit for the data. When speed = 0 mph, dist = 0. Hence we do not calculate the intercept in the model. 
+```{r, fig.height= 4, fig.width= 4}
+model <- lm(dist~speed -1, data = cars)
+plot(cars)
+abline(model)
+```
+
+---
+## Summary of the fitted model
+
+```{r, echo = FALSE}
+summary(model)
+```
+
